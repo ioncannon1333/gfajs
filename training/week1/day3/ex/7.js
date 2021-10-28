@@ -33,8 +33,9 @@ map1['978-1-60309-450-4'] = 'They Called Us Enemy';
 map1['978-1-60309-453-5'] = 'Why Did We Trust Him?';
 console.log(map1)
 
+
 function checkkeys(x, y) {
-    if (x[y] === undefined) {
+    if (x.hasOwnProperty(y) === false) {
         console.log("There haven't a value with the key:" + y)
     } else {
         console.log('the key of ' + y + 'value is:' + x[y])
