@@ -66,3 +66,4 @@ console.log(
   console.log('Test 2 Play');
   guitar2.play();
   bassGuitar2.play();
+  
