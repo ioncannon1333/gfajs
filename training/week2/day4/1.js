@@ -3,14 +3,19 @@ every squre as a cell,each cell has number or mines.
 and hidden or showed.
 
 if its mines,set it near cells number+1.
-if cells not nears for mines,set it to 0;
-if its 0;search for nearby cells until the number.
+default cells which not near mines is number=0
+if its 0;search for nearby cells until all nearby number is showed.
 
 
-
-先生成棋盘，选择第一个点后生成地雷，最后生成数字。
-横向=x 纵向=y
-
+first to get a new table,
+the mines are spawn when first select
+the first select must be a 0-9 number
+table format as the[x[y]] type
+    y1 y2 y3 y4
+x1  x  x  x  x
+x2  x  x  x  x
+x3  x  x  x  x
+x4  x  x  x  x
 */
 
 class nodes {
@@ -50,13 +55,17 @@ class nodes {
         }
     }
     check(location) { //mines/number, if number:check nearby number->if nearby num = 0:check nearby nodes'num; if mines:boom;
-        if (location) {
-
+        this.status = 1; //set status to opened first
+        if (this.number === 0) { //check num, if 0 check nearby close status num.
+            this.check_nearby(location)
+        }
+        if (this.number > 0) {
+            return;
         }
     }
-    check_nearby(nodes) {
-        let a = nodes.location[0]
-        let b = nodes.location[1]
+    check_nearby(location) {
+        let a = location[0]
+        let b = location[1]
         let nearlst = [
             //xxx
             //xox
@@ -87,6 +96,8 @@ class table {
         this.table = [];
     }
     spawn_mine(num) {
+        //random,
+
         if (nodes.mine == true) {
             nodes.add_nearby_value(nodes)
         }
@@ -103,9 +114,10 @@ class table {
     }
     select(nodes) { //1st time spawn and check, after only check.
         if (this.spawned === false) {
+            this.spawned = true;
             this.spawn_mine(this.mines)
         } else {
-            nodes.check(nodes)
+            nodes.check(nodes.location)
         }
     }
 }
