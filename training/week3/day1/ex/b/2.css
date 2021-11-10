@@ -1,0 +1,30 @@
+div {
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 50px 0;
+}
+
+div#box {
+    background-color: #55F;
+    padding: 20px;
+    width: 500px;
+    height: auto;
+}
+
+div#north {
+    background-color: #f55;
+}
+
+div#east {
+    background-color: #ff5;
+}
+
+div#south {
+    background-color: #5ff;
+}
+
+div#west {
+    background-color: #ccf;
+}

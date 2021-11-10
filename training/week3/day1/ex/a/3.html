@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <H3>Sign up</H3>
+    <br>
+    <input type="text" required id="username" value="Username" onfocus="if(this.value=='Username'){this.value=''}" ; onblur="if(this.value==''){this.value='Username'}"></input><br>
+    <input type="email" required id="email" value="Email" onfocus="if(this.value=='Email'){this.value=''}" ; onblur="if(this.value==''){this.value='Email'}"></input><br>
+    <input type="text" required id="password" value="Password" onfocus="if(this.value=='Password'){this.value='';this.type='password'}" ; onblur="if(this.value==''){this.value='Password';this.type='text'}"></input><br>
+    <input type="text" required id="retype" value="Retype Password" onfocus="if(this.value=='Retype Password'){this.value='';this.type='password'}" ; onblur="if(this.value==''){this.value='Retype Password';this.type='text'}"></input><br>
+    <button id="sign-button">SIGN ME UP</button>
+</body>
+
+</html>

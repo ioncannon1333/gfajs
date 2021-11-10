@@ -1,0 +1,12 @@
+.ex1 {
+    border: 5px solid;
+    border-color: #1f1;
+    flex-wrap: wrap;
+    background-color: #1bb;
+    width: 200px;
+    height: 100px;
+    margin: 15;
+    padding: 15;
+    block-size: 100, 200;
+    font-size: 36;
+}

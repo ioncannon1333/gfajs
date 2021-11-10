@@ -25,6 +25,44 @@ class nodes {
         this.number = number === undefined ? 0 : number //0-9
         this.location = location // [a,b] -> [x[y]]
     }
+}
+
+//location:[a,b]
+
+
+class table {
+    constructor() {
+        this.size = 0;
+        this.mines = 0;
+        this.spawned = false;
+        this.table = [];
+    }
+    spawn_mine(num) {
+        //random,
+
+        if (nodes.mine == true) {
+            this.add_nearby_value(nodes)
+        }
+    }
+    spawn(size, mines) { //size,mines.
+        this.size = size;
+        this.mines = mines;
+
+        for (let i = 0; i < size; i++) { //spawn grid
+            for (let j = 0; j < size; j++) {
+                table[i].push
+            }
+        }
+    }
+    select(nodes) { //1st time spawn and check, after only check.
+        if (this.spawned === false) {
+            this.spawned = true;
+            this.spawn_mine(this.mines)
+        } else {
+            this.check(nodes.location)
+        }
+    }
+
     add_value(location) {
         if (location[0] === undefined || location[0] < 0 || location[1] === undefined || location[1] < 0) { // <0 or >a|b.max
             return
@@ -32,6 +70,17 @@ class nodes {
             this.number++
         }
     }
+
+    check(location) { //mines/number, if number:check nearby number->if nearby num = 0:check nearby nodes'num; if mines:boom;
+        this.status = 1; //set status to opened first
+        if (this.number === 0) { //check num, if 0 check nearby close status num.
+            this.check_nearby(location)
+        }
+        if (this.number > 0) {
+            return;
+        }
+    }
+
     add_nearby_value(nodes) {
         let a = nodes.location[0]
         let b = nodes.location[1]
@@ -51,16 +100,7 @@ class nodes {
             [a + 1, b + 1]
         ]
         for (let i = 0; i < 8; i++) {
-            nodes.add_value(nearlst[i])
-        }
-    }
-    check(location) { //mines/number, if number:check nearby number->if nearby num = 0:check nearby nodes'num; if mines:boom;
-        this.status = 1; //set status to opened first
-        if (this.number === 0) { //check num, if 0 check nearby close status num.
-            this.check_nearby(location)
-        }
-        if (this.number > 0) {
-            return;
+            this.add_value(nearlst[i])
         }
     }
     check_nearby(location) {
@@ -83,41 +123,6 @@ class nodes {
         ]
         for (let i = 0; i < 8; i++) {
             this.check(nearlst[i])
-        }
-    }
-
-}
-
-class table {
-    constructor() {
-        this.size = 0;
-        this.mines = 0;
-        this.spawned = false;
-        this.table = [];
-    }
-    spawn_mine(num) {
-        //random,
-
-        if (nodes.mine == true) {
-            nodes.add_nearby_value(nodes)
-        }
-    }
-    spawn(size, mines) { //size,mines.
-        this.size = size;
-        this.mines = mines;
-
-        for (let i = 0; i < size; i++) { //spawn grid
-            for (let j = 0; j < size; j++) {
-                table[i].push
-            }
-        }
-    }
-    select(nodes) { //1st time spawn and check, after only check.
-        if (this.spawned === false) {
-            this.spawned = true;
-            this.spawn_mine(this.mines)
-        } else {
-            nodes.check(nodes.location)
         }
     }
 }
